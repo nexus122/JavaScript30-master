@@ -1,48 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Understanding JavaScript's Capture</title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    div {
+      width: 100%;
+      padding: 100px;
+    }
+
+    article{
+      width: 100%;
+      padding: 100px;
+    }
+
+    .one {
+      background: thistle;
+    }
+
+    .two {
+      background: mistyrose;
+    }
+
+    .three {
+      background: coral;
+    }
+  </style>
 </head>
+
 <body class="bod">
 
-  <div class="one">
-    <div class="two">
-      <div class="three">
+  <div id="exterior" class="one">
+    <div id="medio" class="two">
+      <div id="interior" class="three">
       </div>
     </div>
   </div>
 
-<style>
-  html {
-    box-sizing: border-box;
-  }
-  
-  *, *:before, *:after { 
-    box-sizing: inherit; 
-  }
 
-  div {
-    width: 100%;
-    padding: 100px;
-  }
 
-  .one {
-    background: thistle;
-  }
+  <button></button>
+  <script>
+    // Asociad un evento click a cada uno de los div.
+    // La funcion de callback, debe ehecuytar un console.log y mostrar por el terminal el valor de event.target.classList
 
-  .two {
-    background: mistyrose;
-  }
+    /* Add event Listener para todos */
+    document.querySelectorAll("div").forEach(div => {
+      div.addEventListener("click", function (event) {
+        event.stopPropagation()
+        console.log(`------------------------ ${event.target.id} ------------------------`);
+        console.log("target: ", event.target.classList.value);
+        console.log("currentTarget: ", event.currentTarget.classList.value);
+      })
+    })
 
-  .three {
-    background: coral;
-  }
-</style>
 
-<button></button>
-<script>
-
-</script>
+  </script>
 </body>
+
 </html>
